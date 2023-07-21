@@ -3,15 +3,12 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 
-// Define a unique namespace for your mod
 namespace WildlifeControl
 {
-    // This class stores the maximum number of wild animals allowed on the map
     public class AnimalLimitSettings : ModSettings
     {
         public int maxWildAnimals = 100;
 
-        // This method is used to save and load the maxWildAnimals value when the game is saved or loaded
         public override void ExposeData()
         {
             base.ExposeData();
@@ -19,18 +16,17 @@ namespace WildlifeControl
         }
     }
 
-    // This class is the main entry point for your mod and initializes the AnimalLimitSettings instance
     public class WildlifeControl : Mod
     {
-        private AnimalLimitSettings settings;
+        private readonly AnimalLimitSettings settings;
 
         public WildlifeControl(ModContentPack content) : base(content)
         {
-            settings = GetSettings<AnimalLimitSettings>();
-            LongEventHandler.ExecuteWhenFinished(AddGameComponent);
+            settings = new AnimalLimitSettings();
+            AddGameComponent();
         }
 
-        private void AddGameComponent()
+        private static void AddGameComponent()
         {
             if (Current.Game != null && Current.Game.GetComponent<AnimalLimitController>() == null)
             {
@@ -38,7 +34,6 @@ namespace WildlifeControl
             }
         }
 
-        // This method creates a settings window for the user to adjust the maximum number of wild animals
         public override void DoSettingsWindowContents(Rect inRect)
         {
             Listing_Standard listing = new();
@@ -49,30 +44,28 @@ namespace WildlifeControl
             base.DoSettingsWindowContents(inRect);
         }
 
-        // This method returns the settings category name displayed in the game's mod settings menu
         public override string SettingsCategory()
         {
             return "Wildlife Control";
         }
     }
 
-    // This class is responsible for checking and enforcing the wild animal limit
-    public class AnimalLimitController : GameComponent
+    public class WildlifeControlController : GameComponent
     {
         private int nextCheckTick;
+        private static bool animalRemoved;
 
-        public AnimalLimitController(Game game) { }
+        public WildlifeControlController(Game game) : base(game) { }
 
         public override void GameComponentTick()
         {
             if (Find.TickManager.TicksGame >= nextCheckTick)
             {
                 CheckAnimalLimit();
-                nextCheckTick = Find.TickManager.TicksGame + GenDate.TicksPerDay;
+                nextCheckTick = Find.TickManager.TicksGame + (animalRemoved ? 2 : GenDate.TicksPerDay);
             }
         }
 
-        // This method checks the number of wild animals on each map and removes excess animals
         private static void CheckAnimalLimit()
         {
             AnimalLimitSettings settings = LoadedModManager.GetMod<WildlifeControl>().GetSettings<AnimalLimitSettings>();
@@ -80,10 +73,8 @@ namespace WildlifeControl
 
             foreach (Map map in Find.Maps)
             {
-                // Get a list of wild animals on the map (not belonging to any faction)
                 var wildAnimals = map.mapPawns.AllPawnsSpawned.Where(p => p.RaceProps.Animal && p.Faction == null).ToList();
 
-                // Sort animals based on health conditions, age, and species group size
                 wildAnimals = wildAnimals
                     .OrderByDescending(a => a.health.summaryHealth.SummaryHealthPercent < 1)
                     .ThenByDescending(a => a.health.hediffSet.hediffs.Any(h => h.IsPermanent()))
@@ -91,14 +82,26 @@ namespace WildlifeControl
                     .ThenByDescending(a => wildAnimals.Count(b => b.def == a.def))
                     .ToList();
 
-                // Remove excess wild animals until the count is below the maximum limit
-                while (wildAnimals.Count > maxWildAnimals)
+                if (wildAnimals.Count > maxWildAnimals)
                 {
                     Pawn animalToRemove = wildAnimals.First();
                     animalToRemove.Destroy();
-                    wildAnimals.Remove(animalToRemove);
+                    animalRemoved = true;
+                }
+                else
+                {
+                    animalRemoved = false;
                 }
             }
         }
+    }
+
+    public class AnimalLimitController : GameComponent
+    {
+        public AnimalLimitController(Game game) : base(game)
+        {
+        }
+
+        // Add your implementation here
     }
 }

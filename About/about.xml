@@ -4,8 +4,6 @@
     <author>Mycellius</author>
     <packageId>Mycellius.WildlifeControl</packageId>
     <url>https://github.com/Mycellius/WildlifeControl</url>
-    <steamWorkshopUri>https://steamcommunity.com/sharedfiles/filedetails/?id=3007548683</steamWorkshopUri>
-    <previewImagePath>preview.png</previewImagePath>
     <modVersion>0.0.1</modVersion>
     <supportedVersions>
         <li>1.4</li>
