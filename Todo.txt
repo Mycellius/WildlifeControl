@@ -1,0 +1,32 @@
+Wildlife Control Mod - Todo List
+================================
+
+1. Test the mod
+   - Ensure all features are working as expected
+   - Check for any bugs or issues
+   - Test compatibility with different RimWorld versions
+
+2. Add the mod to the Steam Workshop
+   - Follow the guidelines for uploading mods to the Steam Workshop
+   - Ensure the mod's `About.xml` file is properly configured
+   - Provide a clear description and preview image for the mod
+
+3. Improve the mod
+   - Gather feedback from users
+   - Implement new features or improvements based on user feedback
+   - Fix any reported bugs or issues
+
+4. Check dependencies and incompatibilities
+   - Ensure the mod is compatible with commonly used libraries and frameworks
+   - List any known incompatibilities in the `About.xml` file
+   - Test the mod with other popular mods to identify potential conflicts
+
+5. Optimize for multiplayer
+   - Test the mod with RimWorld's multiplayer mod
+   - Ensure all features work correctly in a multiplayer environment
+   - Address any issues or bugs specific to multiplayer
+
+6. Update the mod as needed
+   - Keep the mod up-to-date with new RimWorld versions
+   - Address any newly discovered bugs or issues
+   - Continuously improve the mod based on user feedback and new ideas
