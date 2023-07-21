@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Manifest>
     <identifier>Wildlife Control</identifier>
-    <version>0.9</version>
+    <version>v1.0</version>
     <dependencies>
     </dependencies>
     <incompatibleWith>
@@ -10,7 +10,7 @@
     </loadAfter>
     <manifestUri>https://raw.githubusercontent.com/Mycellius/WildlifeControl/main/About/Manifest.xml</manifestUri>
     <downloadUri>
-        <li>https://github.com/Mycellius/WildlifeControl/releases/download/Latest/</li>
+        <li>https://github.com/Mycellius/WildlifeControl/releases/download/v1.0/</li>
         <li>https://steamcommunity.com/sharedfiles/filedetails/?id=3007548683</li>
     </downloadUri>
 </Manifest>

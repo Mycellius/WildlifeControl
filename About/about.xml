@@ -4,7 +4,7 @@
     <author>Mycellius</author>
     <packageId>Mycellius.WildlifeControl</packageId>
     <url>https://github.com/Mycellius/WildlifeControl</url>
-    <modVersion>0.9</modVersion>
+    <modVersion>1</modVersion>
     <supportedVersions>
         <li>1.4</li>
     </supportedVersions>
