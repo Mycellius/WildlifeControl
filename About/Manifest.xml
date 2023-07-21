@@ -10,7 +10,7 @@
     </loadAfter>
     <manifestUri>https://raw.githubusercontent.com/Mycellius/WildlifeControl/main/About/Manifest.xml</manifestUri>
     <downloadUri>
-        <li>https://github.com/Mycellius/WildlifeControl/releases/download/Latest/WildlifeControl.zip</li>
+        <li>https://github.com/Mycellius/WildlifeControl/releases/download/Latest/</li>
         <li>https://steamcommunity.com/sharedfiles/filedetails/?id=3007548683</li>
     </downloadUri>
 </Manifest>
