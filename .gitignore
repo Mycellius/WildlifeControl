@@ -398,8 +398,8 @@ FodyWeavers.xsd
 *.sln.iml
 *.csproj
 *.sln
-Compiler command.txt
-obj/
+/!dev-only/
+/obj/
 /Assemblies/WildlifeControl.deps.json
 /Assemblies/UnityEngine.UI.dll
 /Assemblies/UnityEngine.dll
