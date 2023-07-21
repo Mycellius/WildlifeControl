@@ -6,7 +6,7 @@ Wildlife Control is a mod for RimWorld that allows you to limit the number of wi
 
 - Set a maximum number of wild animals allowed on the map
 - Remove excess animals once every in-game day
-- Prioritize removal based on health conditions, (hopefully) relative age, and species group size
+- Prioritize removal based on health conditions, relative age, and species group size
 
 ## Installation
 

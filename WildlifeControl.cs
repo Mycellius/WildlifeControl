@@ -69,10 +69,11 @@ namespace WildlifeControl
                 var wildAnimals = map.mapPawns.AllPawnsSpawned.Where(p => p.RaceProps.Animal && p.Faction == null).ToList();
 
                 wildAnimals = wildAnimals
-                    .OrderByDescending(a => a.health.summaryHealth.SummaryHealthPercent < 1)
-                    .ThenByDescending(a => a.health.hediffSet.hediffs.Any(h => h.IsPermanent()))
-                    .ThenByDescending(a => a.ageTracker.AgeBiologicalTicks / a.RaceProps.lifeExpectancy)
-                    .ThenByDescending(a => wildAnimals.Count(b => b.def == a.def))
+                    .GroupBy(a => a.def)
+                    .OrderByDescending(g => g.Count())
+                    .SelectMany(g => g.OrderByDescending(a => a.health.summaryHealth.SummaryHealthPercent < 1)
+                        .ThenByDescending(a => a.health.hediffSet.hediffs.Any(h => h.IsPermanent()))
+                        .ThenByDescending(a => a.ageTracker.AgeBiologicalTicks / a.RaceProps.lifeExpectancy))
                     .ToList();
 
                 if (wildAnimals.Count > maxWildAnimals)
