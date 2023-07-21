@@ -405,19 +405,14 @@ FodyWeavers.xsd
 /!dev-only/
 /obj/
 
-# wut da heeeeil
-/Assemblies/WildlifeControl.deps.json
-/Assemblies/UnityEngine.UI.dll
-/Assemblies/UnityEngine.dll
-/Assemblies/TextMeshPro-1.0.55.56.0b11.dll
-/Assemblies/NVorbis.dll
-/Assemblies/NAudio.dll
-/Assemblies/HugsLib.dll
-/Assemblies/Assembly-CSharp.dll
-/Assemblies/Assembly-CSharp-firstpass.dll
-/Assemblies/0Harmony.dll
+# the rest of em
+/sources/
+Assemblies/Assembly-CSharp-firstpass.dll
+Assemblies/Assembly-CSharp.dll
 Assemblies/com.rlabrecque.steamworks.net.dll
 Assemblies/ISharpZipLib.dll
+Assemblies/NAudio.dll
+Assemblies/NVorbis.dll
 Assemblies/Unity.TextMeshPro.dll
 Assemblies/UnityEngine.AccessibilityModule.dll
 Assemblies/UnityEngine.AIModule.dll
@@ -432,6 +427,7 @@ Assemblies/UnityEngine.ClusterRendererModule.dll
 Assemblies/UnityEngine.CoreModule.dll
 Assemblies/UnityEngine.CrashReportingModule.dll
 Assemblies/UnityEngine.DirectorModule.dll
+Assemblies/UnityEngine.dll
 Assemblies/UnityEngine.DSPGraphModule.dll
 Assemblies/UnityEngine.GameCenterModule.dll
 Assemblies/UnityEngine.GridModule.dll
@@ -456,6 +452,7 @@ Assemblies/UnityEngine.TerrainPhysicsModule.dll
 Assemblies/UnityEngine.TextCoreModule.dll
 Assemblies/UnityEngine.TextRenderingModule.dll
 Assemblies/UnityEngine.TilemapModule.dll
+Assemblies/UnityEngine.UI.dll
 Assemblies/UnityEngine.UIElementsModule.dll
 Assemblies/UnityEngine.UIModule.dll
 Assemblies/UnityEngine.UNETModule.dll
@@ -472,3 +469,4 @@ Assemblies/UnityEngine.VideoModule.dll
 Assemblies/UnityEngine.VRModule.dll
 Assemblies/UnityEngine.WindModule.dll
 Assemblies/UnityEngine.XRModule.dll
+Assemblies/WildlifeControl.deps.json
