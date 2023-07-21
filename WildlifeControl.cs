@@ -23,15 +23,6 @@ namespace WildlifeControl
         public WildlifeControl(ModContentPack content) : base(content)
         {
             settings = new AnimalLimitSettings();
-            AddGameComponent();
-        }
-
-        private static void AddGameComponent()
-        {
-            if (Current.Game != null && Current.Game.GetComponent<AnimalLimitController>() == null)
-            {
-                Current.Game.components.Add(new AnimalLimitController(Current.Game));
-            }
         }
 
         public override void DoSettingsWindowContents(Rect inRect)
@@ -39,7 +30,7 @@ namespace WildlifeControl
             Listing_Standard listing = new();
             listing.Begin(inRect);
             listing.Label("Max Wild Animals: " + settings.maxWildAnimals);
-            settings.maxWildAnimals = (int)listing.Slider(settings.maxWildAnimals, 1, 1000);
+            settings.maxWildAnimals = (int)listing.Slider(settings.maxWildAnimals, 0, 1000);
             listing.End();
             base.DoSettingsWindowContents(inRect);
         }
@@ -55,7 +46,9 @@ namespace WildlifeControl
         private int nextCheckTick;
         private static bool animalRemoved;
 
-        public WildlifeControlController(Game game) : base(game) { }
+        public WildlifeControlController(Game game) : base()
+        {
+        }
 
         public override void GameComponentTick()
         {
@@ -94,14 +87,5 @@ namespace WildlifeControl
                 }
             }
         }
-    }
-
-    public class AnimalLimitController : GameComponent
-    {
-        public AnimalLimitController(Game game) : base(game)
-        {
-        }
-
-        // Add your implementation here
     }
 }
