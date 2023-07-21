@@ -396,10 +396,16 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Project files
 *.csproj
 *.sln
+
+# Working folders
 /!dev-only/
 /obj/
+
+# wut da heeeeil
 /Assemblies/WildlifeControl.deps.json
 /Assemblies/UnityEngine.UI.dll
 /Assemblies/UnityEngine.dll

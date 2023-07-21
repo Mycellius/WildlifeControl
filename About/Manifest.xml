@@ -2,10 +2,12 @@
 <Manifest>
     <identifier>Wildlife Control</identifier>
     <version>0.0.1</version>
-    <dependencies />
-    <incompatibleWith />
-    <loadAfter />
-    <suggests />
-    <manifestUri>https://github.com/Mycellius/WildlifeControl/raw/master/About/Manifest.xml</manifestUri>
+    <dependencies>
+    </dependencies>
+    <incompatibleWith>
+    </incompatibleWith>
+    <loadAfter>
+    </loadAfter>
+    <manifestUri>https://raw.githubusercontent.com/Mycellius/WildlifeControl/main/About/Manifest.xml</manifestUri>
     <downloadUri>https://github.com/Mycellius/WildlifeControl</downloadUri>
 </Manifest>
