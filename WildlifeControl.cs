@@ -41,7 +41,7 @@ namespace WildlifeControl
         // This method creates a settings window for the user to adjust the maximum number of wild animals
         public override void DoSettingsWindowContents(Rect inRect)
         {
-            Listing_Standard listing = new Listing_Standard();
+            Listing_Standard listing = new();
             listing.Begin(inRect);
             listing.Label("Max Wild Animals: " + settings.maxWildAnimals);
             settings.maxWildAnimals = (int)listing.Slider(settings.maxWildAnimals, 1, 1000);
