@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using RimWorld;
 using UnityEngine;
@@ -31,6 +32,18 @@ namespace WildlifeControl
             listing.Begin(inRect);
             listing.Label("Max Wild Animals: " + settings.maxWildAnimals);
             settings.maxWildAnimals = (int)listing.Slider(settings.maxWildAnimals, 0, 1000);
+
+            // Add Restore Defaults button
+            if (listing.ButtonText("Restore Defaults"))
+            {
+                settings.maxWildAnimals = 100;
+            }
+
+            // Add text box for selecting the number of animals
+            string maxWildAnimalsText = settings.maxWildAnimals.ToString();
+            Rect textFieldRect = listing.GetRect(30);
+            Widgets.TextFieldNumeric(textFieldRect, ref settings.maxWildAnimals, ref maxWildAnimalsText, 0, 1000);
+
             listing.End();
             base.DoSettingsWindowContents(inRect);
         }
@@ -71,9 +84,10 @@ namespace WildlifeControl
                 wildAnimals = wildAnimals
                     .GroupBy(a => a.def)
                     .OrderByDescending(g => g.Count())
-                    .SelectMany(g => g.OrderByDescending(a => a.health.summaryHealth.SummaryHealthPercent < 1)
-                        .ThenByDescending(a => a.health.hediffSet.hediffs.Any(h => h.IsPermanent()))
-                        .ThenByDescending(a => a.ageTracker.AgeBiologicalTicks / a.RaceProps.lifeExpectancy))
+                    .SelectMany(g => g)
+                    .OrderByDescending(a => a.health.summaryHealth.SummaryHealthPercent < 1)
+                    .ThenByDescending(a => a.health.hediffSet.hediffs.Any(h => h.IsPermanent()))
+                    .ThenByDescending(a => a.ageTracker.AgeBiologicalTicks / a.RaceProps.lifeExpectancy)
                     .ToList();
 
                 if (wildAnimals.Count > maxWildAnimals)
