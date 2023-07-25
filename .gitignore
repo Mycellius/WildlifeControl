@@ -404,6 +404,8 @@ FodyWeavers.xsd
 # Working folders
 /!dev-only/
 /obj/
+/Package/
+SettingsHelper*/
 
 # the rest of em
 /sources/
